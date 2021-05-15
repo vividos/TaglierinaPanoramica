@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:TaglierinaPanoramica"
+             xmlns:formsdemos="clr-namespace:SkiaSharpFormsDemos.Bitmaps"
+             Title="Taglierina Panoramica"
+             BackgroundColor="White"
+             x:Class="TaglierinaPanoramica.ImageCropPage">
+
+    <!-- View model -->
+    <ContentPage.BindingContext>
+        <local:ImageCropViewModel />
+    </ContentPage.BindingContext>
+
+    <StackLayout Margin="0" Spacing="0">
+        <!-- Options -->
+        <FlexLayout Direction="Row"
+                    JustifyContent="Start"
+                    AlignItems="Center"
+                    AlignContent="Start"
+                    Wrap="Wrap"
+                    Padding="4"
+                    BackgroundColor="{StaticResource PrimaryColor}">
+
+            <!-- Open button -->
+            <ImageButton Source="panorama.png"
+                         Command="{Binding OpenImageCommand}"
+                         HeightRequest="{OnPlatform Android=40, UWP=32}"
+                         Padding="4"
+                         Margin="4"
+                         BackgroundColor="{StaticResource PrimaryDarkColor}" />
+
+            <!--<ImageButton Source="rotate_left.png"
+                         Command="{Binding RotateImageCommand}"
+                         IsEnabled="{Binding IsImageAvailable}"
+                         HeightRequest="{OnPlatform Android=40, UWP=32}"
+                         Padding="4"
+                         Margin="4"
+                         BackgroundColor="{StaticResource PrimaryDarkColor}" />-->
+
+            <!-- Output size selection -->
+            <Frame CornerRadius="8"
+                   HeightRequest="40"
+                   Padding="8,0"
+                   BackgroundColor="{StaticResource AccentColor}">
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="arrow_expand_horizontal.png"
+                           Aspect="AspectFit"
+                           WidthRequest="24"
+                           HeightRequest="24" />
+                    <Label Text="{Binding OutputResolution}"
+                           WidthRequest="80"
+                           TextColor="{StaticResource TextColor}"
+                           BackgroundColor="{StaticResource AccentColor}"
+                           VerticalTextAlignment="Center"  />
+                    <Slider x:Name="squareWidthSlider"
+                            WidthRequest="80"
+                            HeightRequest="40"
+                            VerticalOptions="Start"
+                            Maximum="2048"
+                            Minimum="256"
+                            Value="{Binding SquareWidth}"
+                            ValueChanged="Slider_ValueChanged"
+                            ThumbColor="{StaticResource PrimaryDarkColor}"
+                            MinimumTrackColor="White"
+                            MaximumTrackColor="Black"
+                            Margin="8,0" />
+                </StackLayout>
+            </Frame>
+
+            <!-- Number of images selection -->
+            <Frame CornerRadius="8"
+                   Padding="8,0"
+                   Margin="4,0"
+                   HeightRequest="40"
+                   BackgroundColor="{StaticResource AccentColor}">
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="image_multiple_outline.png"
+                           Aspect="AspectFit"
+                           WidthRequest="24"
+                           HeightRequest="24" />
+                    <Label Text="{Binding NumberOfImages}"
+                           TextColor="{StaticResource TextColor}"
+                           VerticalTextAlignment="Center"
+                           Margin="8,0" />
+                    <Stepper Increment="1"
+                             Minimum="2"
+                             Maximum="8"
+                             Value="{Binding NumberOfImages}" />
+                </StackLayout>
+            </Frame>
+
+            <!-- Save button -->
+            <ImageButton Source="scissors_cutting.png"
+                         Command="{Binding SaveImagesCommand}"
+                         IsEnabled="{Binding IsImageAvailable}"
+                         HeightRequest="{OnPlatform Android=40, UWP=32}"
+                         Padding="4"
+                         Margin="4"
+                         BackgroundColor="{StaticResource PrimaryDarkColor}" />
+
+            <!-- Info button -->
+            <ImageButton Source="information_outline.png"
+                         Command="{Binding InfoCommand}"
+                         HeightRequest="{OnPlatform Android=40, UWP=32}"
+                         Padding="4"
+                         Margin="4"
+                         BackgroundColor="{StaticResource PrimaryDarkColor}" />
+        </FlexLayout>
+
+        <!-- Cropping view -->
+        <Grid HorizontalOptions="FillAndExpand"
+              VerticalOptions="FillAndExpand">
+            <!-- Placeholder frame -->
+            <Grid IsVisible="{Binding IsCropViewPlaceholderAvailable}"
+                  BackgroundColor="{StaticResource PrimaryDarkColor}">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding OpenImageCommand}" NumberOfTapsRequired="1" />
+                </Grid.GestureRecognizers>
+                <Rectangle
+                    Aspect="Fill"
+                    Margin="10"
+                    Stroke="{StaticResource PrimaryColorBrush}"
+                    Fill="{StaticResource PrimaryDarkColorBrush}"
+                    StrokeDashArray="4,2"
+                    StrokeThickness="4"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand" />
+                <Label Text="Open an image to crop"
+                       TextColor="{StaticResource PrimaryColor}"
+                       FontSize="32"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       HorizontalOptions="FillAndExpand"
+                       VerticalOptions="FillAndExpand" />
+            </Grid>
+
+            <!-- Cropping canvas view -->
+            <formsdemos:PhotoCropperCanvasView x:Name="cropView"
+                                               Bitmap="{Binding OriginalImage}"
+                                               RotateAngle="{Binding RotateAngle}"
+                                               NumberOfImages="{Binding NumberOfImages}"
+                                               IsVisible="{Binding IsImageAvailable}"
+                                               HorizontalOptions="FillAndExpand"
+                                               VerticalOptions="FillAndExpand" />
+        </Grid>
+    </StackLayout>
+</ContentPage>
