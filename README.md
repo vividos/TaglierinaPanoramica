@@ -1,9 +1,13 @@
 # Taglierina Panoramica
 
-en: Tag is an app for cropping panoramas
-it: Taglierina Panoramica è un'app per ritagliare panorami
+- en: Tag is an app for cropping panoramas
+- it: Taglierina Panoramica è un'app per ritagliare panorami
 
 ![Screenshot](screenshot.jpg)
+
+The app helps to split a panorama image into several images to use them in
+fancy Instagram posts. The app name came into my mind while learning some
+italian on Duolingo.
 
 ## Development
 
@@ -11,6 +15,9 @@ Most of the code for cropping images was taken from the SkiaSharp examples
 found here:
 
 https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/graphics/skiasharp/bitmaps/cropping
+
+The rest is a fairly standard Xamarin.Forms app, using some external libraries
+to keep code low.
 
 Builds are done using Microsoft AppCenter:
 
