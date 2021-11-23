@@ -23,8 +23,10 @@ namespace TaglierinaPanoramica.Droid
         /// <returns>task to wait on</returns>
         public async Task SavePhotoAsync(byte[] data, string folder, string filename)
         {
+#pragma warning disable CS0618 // Type or member is obsolete
             File picturesDirectory = Environment.GetExternalStoragePublicDirectory(
                 Environment.DirectoryPictures);
+#pragma warning restore CS0618 // Type or member is obsolete
 
             File folderDirectory = picturesDirectory;
 
