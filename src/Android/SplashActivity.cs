@@ -12,7 +12,7 @@ namespace TaglierinaPanoramica.Droid
         MainLauncher = true,
         NoHistory = true,
         Theme = "@style/SplashTheme",
-        ScreenOrientation = ScreenOrientation.Landscape | ScreenOrientation.ReverseLandscape,
+        ScreenOrientation = ScreenOrientation.Landscape,
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation,
         LaunchMode = LaunchMode.SingleTop)]
     public class SplashActivity : Activity

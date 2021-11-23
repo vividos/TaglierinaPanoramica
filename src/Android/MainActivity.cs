@@ -15,7 +15,7 @@ namespace TaglierinaPanoramica.Droid
         Label = "Taglierina Panoramica",
         Icon = "@drawable/icon",
         Theme = "@style/MainTheme",
-        ScreenOrientation = ScreenOrientation.Landscape | ScreenOrientation.ReverseLandscape,
+        ScreenOrientation = ScreenOrientation.Landscape,
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize)]
     public class MainActivity : Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
