@@ -5,6 +5,9 @@ using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
+#pragma warning disable SA1516 // Elements should be separated by blank line
+#pragma warning disable SA1600 // Elements should be documented
+
 [assembly: ResolutionGroupName("XamarinDocs")]
 [assembly: ExportEffect(typeof(TouchTracking.Droid.TouchEffect), "TouchEffect")]
 
@@ -29,7 +32,7 @@ namespace TouchTracking.Droid
         protected override void OnAttached()
         {
             // Get the Android View corresponding to the Element that the effect is attached to
-            this.view = this.Control == null ? this.Container : this.Control;
+            this.view = this.Control ?? this.Container;
 
             // Get access to the TouchEffect class in the .NET Standard library
             TouchTracking.TouchEffect touchEffect =
@@ -72,7 +75,6 @@ namespace TouchTracking.Droid
 
             // Get the id that identifies a finger over the course of its progress
             int id = motionEvent.GetPointerId(pointerIndex);
-
 
             senderView.GetLocationOnScreen(this.twoIntArray);
             Point screenPointerCoords = new Point(
