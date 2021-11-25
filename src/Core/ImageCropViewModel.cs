@@ -241,6 +241,12 @@ namespace TaglierinaPanoramica
             await Application.Current.MainPage.DisplayToastAsync("All tiled images were saved.");
         }
 
+        /// <summary>
+        /// Stores tiled image in output folder
+        /// </summary>
+        /// <param name="subImage">sub image to store</param>
+        /// <param name="imageIndex">image index to use</param>
+        /// <returns>task to wait on</returns>
         private async Task StoreImageAsync(SKBitmap subImage, int imageIndex)
         {
             string outputFilename =
