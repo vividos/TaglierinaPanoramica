@@ -1,6 +1,6 @@
 # Taglierina Panoramica
 
-- en: Tag is an app for cropping panoramas
+- en: Taglierina Panoramica is an app for cropping panoramas
 - it: Taglierina Panoramica è un'app per ritagliare panorami
 
 ![Screenshot](screenshot.jpg)
