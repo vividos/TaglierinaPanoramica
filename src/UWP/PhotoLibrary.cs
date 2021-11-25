@@ -30,7 +30,14 @@ namespace TaglierinaPanoramica.UWP
             // Get the folder or create it if necessary
             if (!string.IsNullOrEmpty(folder))
             {
-                folderDirectory = await picturesDirectory.GetFolderAsync(folder);
+                try
+                {
+                    folderDirectory = await picturesDirectory.GetFolderAsync(folder);
+                }
+                catch (Exception)
+                {
+                    folderDirectory = null;
+                }
 
                 if (folderDirectory == null)
                 {
