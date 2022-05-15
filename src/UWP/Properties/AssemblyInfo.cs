@@ -4,12 +4,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("TaglierinaPanoramica.UWP")]
+[assembly: AssemblyTitle("TaglierinaPanoramica for Windows")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("TaglierinaPanoramica.UWP")]
-[assembly: AssemblyCopyright("Copyright © 2021 vividos")]
+[assembly: AssemblyProduct("Taglierina Panoramica")]
+[assembly: AssemblyCopyright("Copyright © 2021-2022 vividos")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
