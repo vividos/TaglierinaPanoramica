@@ -43,7 +43,7 @@ namespace TaglierinaPanoramica
         public ICommand OpenImageCommand { get; set; }
 
         /// <summary>
-        /// Command to execute to rotate the image
+        /// Command to execute to rotate the image by 90 degrees
         /// </summary>
         public ICommand RotateImageCommand { get; set; }
 
@@ -164,7 +164,23 @@ namespace TaglierinaPanoramica
         /// </summary>
         private void RotateImage()
         {
-            this.RotateAngle = (this.RotateAngle + 90.0) % 360.0;
+            // Note: this doesn't modify the RotateAngle, but instead rotates the OriginalImage
+            var bitmap = this.OriginalImage;
+
+            SKBitmap rotatedBitmap = new SKBitmap(bitmap.Height, bitmap.Width);
+
+            using (SKCanvas canvas = new SKCanvas(rotatedBitmap))
+            {
+                canvas.Clear();
+                canvas.Translate(0, bitmap.Width);
+                canvas.RotateDegrees(-90);
+                canvas.DrawBitmap(bitmap, new SKPoint());
+            }
+
+            this.OriginalImage = rotatedBitmap;
+            this.OnPropertyChanged(nameof(this.OriginalImage));
+
+            bitmap.Dispose();
         }
 
         /// <summary>

@@ -30,13 +30,13 @@
                          Margin="4"
                          BackgroundColor="{StaticResource PrimaryDarkColor}" />
 
-            <!--<ImageButton Source="rotate_left.png"
+            <ImageButton Source="rotate_left.png"
                          Command="{Binding RotateImageCommand}"
                          IsEnabled="{Binding IsImageAvailable}"
                          HeightRequest="{OnPlatform Android=40, UWP=32}"
                          Padding="4"
                          Margin="4"
-                         BackgroundColor="{StaticResource PrimaryDarkColor}" />-->
+                         BackgroundColor="{StaticResource PrimaryDarkColor}" />
 
             <!-- Output size selection -->
             <Frame CornerRadius="8"
