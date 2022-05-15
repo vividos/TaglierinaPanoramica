@@ -167,6 +167,10 @@ namespace TaglierinaPanoramica
         {
             // Note: this doesn't modify the RotateAngle, but instead rotates the OriginalImage
             var bitmap = this.OriginalImage;
+            if (bitmap == null)
+            {
+                return;
+            }
 
             SKBitmap rotatedBitmap = new SKBitmap(bitmap.Height, bitmap.Width);
 
