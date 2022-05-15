@@ -25,9 +25,9 @@ namespace TouchTracking.Droid
         private bool capture;
         private Func<double, double> fromPixels;
         private static readonly Dictionary<Android.Views.View, TouchEffect> ViewDictionary =
-            new Dictionary<Android.Views.View, TouchEffect>();
+            new();
         private static readonly Dictionary<int, TouchEffect> IdToEffectDictionary =
-            new Dictionary<int, TouchEffect>();
+            new();
 
         protected override void OnAttached()
         {

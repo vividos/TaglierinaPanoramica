@@ -144,15 +144,13 @@ namespace TaglierinaPanoramica
                     return;
                 }
 
-                using (var stream = await result.OpenReadAsync())
-                {
-                    this.originalImageFilename = result.FileName;
+                using var stream = await result.OpenReadAsync();
+                this.originalImageFilename = result.FileName;
 
-                    this.OriginalImage = SKBitmap.Decode(stream);
-                    this.OnPropertyChanged(nameof(this.OriginalImage));
-                    this.OnPropertyChanged(nameof(this.IsImageAvailable));
-                    this.OnPropertyChanged(nameof(this.IsCropViewPlaceholderAvailable));
-                }
+                this.OriginalImage = SKBitmap.Decode(stream);
+                this.OnPropertyChanged(nameof(this.OriginalImage));
+                this.OnPropertyChanged(nameof(this.IsImageAvailable));
+                this.OnPropertyChanged(nameof(this.IsCropViewPlaceholderAvailable));
             }
             catch (Exception ex)
             {
@@ -179,7 +177,7 @@ namespace TaglierinaPanoramica
                 canvas.Clear();
                 canvas.Translate(0, bitmap.Width);
                 canvas.RotateDegrees(-90);
-                canvas.DrawBitmap(bitmap, new SKPoint());
+                canvas.DrawBitmap(bitmap, default(SKPoint));
             }
 
             this.OriginalImage = rotatedBitmap;
@@ -275,15 +273,13 @@ namespace TaglierinaPanoramica
                 Path.GetFileNameWithoutExtension(this.originalImageFilename) +
                 $"-tiled-{imageIndex}.jpg";
 
-            using (var outputStream = new MemoryStream())
-            {
-                subImage.Encode(outputStream, SKEncodedImageFormat.Jpeg, 95);
+            using var outputStream = new MemoryStream();
+            subImage.Encode(outputStream, SKEncodedImageFormat.Jpeg, 95);
 
-                var photoLibrary = DependencyService.Get<IPhotoLibrary>();
+            var photoLibrary = DependencyService.Get<IPhotoLibrary>();
 
-                byte[] data = outputStream.ToArray();
-                await photoLibrary.SavePhotoAsync(data, "TaglierinaPanoramica", outputFilename);
-            }
+            byte[] data = outputStream.ToArray();
+            await photoLibrary.SavePhotoAsync(data, "TaglierinaPanoramica", outputFilename);
         }
 
         /// <summary>

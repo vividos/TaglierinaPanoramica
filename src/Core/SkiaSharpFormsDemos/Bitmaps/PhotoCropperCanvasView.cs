@@ -25,17 +25,17 @@ namespace SkiaSharpFormsDemos.Bitmaps
         /// <summary>
         /// Touch tracking
         /// </summary>
-        private readonly TouchEffect touchEffect = new TouchEffect();
+        private readonly TouchEffect touchEffect = new();
 
         /// <summary>
         /// Mapping of touch IDs to touch points
         /// </summary>
-        private readonly Dictionary<long, TouchPoint> touchPoints = new Dictionary<long, TouchPoint>();
+        private readonly Dictionary<long, TouchPoint> touchPoints = new();
 
         /// <summary>
         /// Corner stroke drawing object
         /// </summary>
-        private readonly SKPaint cornerStroke = new SKPaint
+        private readonly SKPaint cornerStroke = new()
         {
             Style = SKPaintStyle.Stroke,
             Color = SKColors.White,
@@ -45,7 +45,7 @@ namespace SkiaSharpFormsDemos.Bitmaps
         /// <summary>
         /// Edge stroke drawing object
         /// </summary>
-        private readonly SKPaint edgeStroke = new SKPaint
+        private readonly SKPaint edgeStroke = new()
         {
             Style = SKPaintStyle.Stroke,
             Color = SKColors.White,
@@ -55,7 +55,7 @@ namespace SkiaSharpFormsDemos.Bitmaps
         /// <summary>
         /// Divider dashed stroke drawing object
         /// </summary>
-        private readonly SKPaint dividerPaint = new SKPaint
+        private readonly SKPaint dividerPaint = new()
         {
             Style = SKPaintStyle.Stroke,
             Color = SKColors.White,

@@ -36,22 +36,20 @@ namespace TaglierinaPanoramica.Droid
                 folderDirectory.Mkdirs();
             }
 
-            using (File bitmapFile = new File(folderDirectory, filename))
+            using File bitmapFile = new File(folderDirectory, filename);
+            bitmapFile.CreateNewFile();
+
+            using (FileOutputStream outputStream = new FileOutputStream(bitmapFile))
             {
-                bitmapFile.CreateNewFile();
-
-                using (FileOutputStream outputStream = new FileOutputStream(bitmapFile))
-                {
-                    await outputStream.WriteAsync(data);
-                }
-
-                // Make sure it shows up in the Photos gallery promptly.
-                MediaScannerConnection.ScanFile(
-                    Xamarin.Essentials.Platform.CurrentActivity,
-                    new string[] { bitmapFile.Path },
-                    new string[] { "image/png", "image/jpeg" },
-                    null);
+                await outputStream.WriteAsync(data);
             }
+
+            // Make sure it shows up in the Photos gallery promptly.
+            MediaScannerConnection.ScanFile(
+                Xamarin.Essentials.Platform.CurrentActivity,
+                new string[] { bitmapFile.Path },
+                new string[] { "image/png", "image/jpeg" },
+                null);
         }
     }
 }
