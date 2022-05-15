@@ -70,7 +70,7 @@ namespace TouchTracking.Droid
             Android.Views.View senderView = sender as Android.Views.View;
             MotionEvent motionEvent = args.Event;
 
-            // Get the pointer index
+            // Get the pointer index; note: not for Move events
             int pointerIndex = motionEvent.ActionIndex;
 
             // Get the id that identifies a finger over the course of its progress
@@ -99,13 +99,13 @@ namespace TouchTracking.Droid
                     {
                         id = motionEvent.GetPointerId(pointerIndex);
 
+                        screenPointerCoords = new Point(
+                            this.twoIntArray[0] + motionEvent.GetX(pointerIndex),
+                            this.twoIntArray[1] + motionEvent.GetY(pointerIndex));
+
                         if (this.capture)
                         {
                             senderView.GetLocationOnScreen(this.twoIntArray);
-
-                            screenPointerCoords = new Point(
-                                this.twoIntArray[0] + motionEvent.GetX(pointerIndex),
-                                this.twoIntArray[1] + motionEvent.GetY(pointerIndex));
 
                             this.FireEvent(this, id, TouchActionType.Moved, screenPointerCoords, true);
                         }
