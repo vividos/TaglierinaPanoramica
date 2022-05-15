@@ -94,7 +94,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <AndroidAotProfile Include="custom.aprof" />
+    <AndroidAotProfile Include="$(MSBuildThisFileDirectory)custom.aprof" />
     <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>
