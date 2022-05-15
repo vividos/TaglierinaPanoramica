@@ -1,5 +1,6 @@
 ﻿using SkiaSharp;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -238,8 +239,9 @@ namespace TaglierinaPanoramica
                 {
                     await this.StoreImageAsync(subImage, imageIndex);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    Debug.WriteLine(ex.ToString());
                     numErrorImages++;
                 }
             }
@@ -247,7 +249,7 @@ namespace TaglierinaPanoramica
             if (numErrorImages > 0)
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "Error while sharing images",
+                    "Error while saving images",
                     $"{numErrorImages} images were not exported",
                     "Close");
 
