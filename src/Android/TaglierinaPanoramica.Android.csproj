@@ -67,10 +67,10 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AppCenter.Crashes">
-      <Version>4.5.1</Version>
+      <Version>5.0.5</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.AppCenter.Distribute">
-      <Version>4.5.1</Version>
+      <Version>5.0.5</Version>
     </PackageReference>
     <PackageReference Include="Resizetizer.NT">
       <Version>0.3.0</Version>
@@ -78,10 +78,10 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Xamarin.CommunityToolkit">
-      <Version>2.0.2</Version>
+      <Version>2.0.6</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2401" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.7.3" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2662" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.8.1" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />

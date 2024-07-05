@@ -15,7 +15,7 @@
 
   <ItemGroup>
     <!-- Add reference to SonarAnalyzer analyzers to all projects -->
-    <PackageReference Include="SonarAnalyzer.CSharp" Version="8.*" PrivateAssets="all" />
+    <PackageReference Include="SonarAnalyzer.CSharp" Version="9.*" PrivateAssets="all" />
 
     <!-- Add reference to StyleCop analyzers to all projects -->
     <PackageReference Include="StyleCop.Analyzers" Version="1.*" PrivateAssets="all" />

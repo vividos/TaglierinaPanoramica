@@ -6,16 +6,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Markdig" Version="0.30.2" />
+    <PackageReference Include="Markdig" Version="0.37.0" />
     <PackageReference Include="Resizetizer.NT" Version="0.3.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="SkiaSharp" Version="2.80.3" />
-    <PackageReference Include="SkiaSharp.Views.Forms" Version="2.80.3" />
-    <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.2" />
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2401" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.7.3" />
+    <PackageReference Include="SkiaSharp" Version="2.88.8" />
+    <PackageReference Include="SkiaSharp.Views.Forms" Version="2.88.8" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.6" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2662" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.8.1" />
   </ItemGroup>
 
   <ItemGroup>
