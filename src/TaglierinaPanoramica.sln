@@ -1,11 +1,10 @@
-﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31112.23
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaglierinaPanoramica.UWP", "UWP\TaglierinaPanoramica.UWP.csproj", "{7BC2F000-ECD6-45C6-A0AF-2D57543091AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaglierinaPanoramica.UWP", "UWP\TaglierinaPanoramica.UWP.csproj", "{7BC2F000-ECD6-45C6-A0AF-2D57543091AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaglierinaPanoramica.Android", "Android\TaglierinaPanoramica.Android.csproj", "{6733CE33-FCA0-48AF-977B-7C681DB9680C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaglierinaPanoramica.Android", "Android\TaglierinaPanoramica.Android.csproj", "{6733CE33-FCA0-48AF-977B-7C681DB9680C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaglierinaPanoramica", "Core\TaglierinaPanoramica.csproj", "{5E537131-DA35-40E2-9465-85588149E00C}"
 EndProject

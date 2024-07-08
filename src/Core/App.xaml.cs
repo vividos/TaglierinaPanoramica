@@ -1,8 +1,4 @@
-﻿using Xamarin.Essentials;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-
-[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
+﻿[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 
 namespace TaglierinaPanoramica
 {
@@ -18,8 +14,8 @@ namespace TaglierinaPanoramica
         {
             this.InitializeComponent();
 
-            // on UWP, there must be a navigation page to show toast messages
-            this.MainPage = DeviceInfo.Platform == DevicePlatform.UWP
+            // on WinUI, there must be a navigation page to show toast messages
+            this.MainPage = DeviceInfo.Platform == DevicePlatform.WinUI
                 ? new NavigationPage(new ImageCropPage())
                 : new ImageCropPage();
         }

@@ -1,6 +1,4 @@
-﻿using Xamarin.Forms;
-
-namespace TouchTracking
+﻿namespace TouchTracking
 {
     /// <summary>
     /// Touch effect Forms implementation

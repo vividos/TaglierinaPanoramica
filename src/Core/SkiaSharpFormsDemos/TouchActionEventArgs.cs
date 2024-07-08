@@ -1,7 +1,4 @@
-﻿using System;
-using Xamarin.Forms;
-
-namespace TouchTracking
+﻿namespace TouchTracking
 {
     /// <summary>
     /// Event arguments for touch action

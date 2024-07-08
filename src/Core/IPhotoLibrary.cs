@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-
-namespace TaglierinaPanoramica
+﻿namespace TaglierinaPanoramica
 {
     /// <summary>
     /// Photo library interface

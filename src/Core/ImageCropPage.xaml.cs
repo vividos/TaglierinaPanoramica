@@ -1,7 +1,4 @@
-﻿using System;
-using Xamarin.Forms;
-
-namespace TaglierinaPanoramica
+﻿namespace TaglierinaPanoramica
 {
     /// <summary>
     /// Image crop page

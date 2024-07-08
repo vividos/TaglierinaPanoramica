@@ -1,9 +1,7 @@
 ﻿using SkiaSharp;
-using SkiaSharp.Views.Forms;
-using System;
-using System.Collections.Generic;
+using SkiaSharp.Views.Maui;
+using SkiaSharp.Views.Maui.Controls;
 using TouchTracking;
-using Xamarin.Forms;
 
 namespace SkiaSharpFormsDemos.Bitmaps
 {

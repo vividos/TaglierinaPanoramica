@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:TaglierinaPanoramica"
              xmlns:formsdemos="clr-namespace:SkiaSharpFormsDemos.Bitmaps"
@@ -25,7 +25,7 @@
             <!-- Open button -->
             <ImageButton Source="panorama.png"
                          Command="{Binding OpenImageCommand}"
-                         HeightRequest="{OnPlatform Android=40, UWP=32}"
+                         HeightRequest="{OnPlatform Android=40, WinUI=32}"
                          Padding="4"
                          Margin="4"
                          BackgroundColor="{StaticResource PrimaryDarkColor}" />
@@ -33,7 +33,7 @@
             <ImageButton Source="rotate_left.png"
                          Command="{Binding RotateImageCommand}"
                          IsEnabled="{Binding IsImageAvailable}"
-                         HeightRequest="{OnPlatform Android=40, UWP=32}"
+                         HeightRequest="{OnPlatform Android=40, WinUI=32}"
                          Padding="4"
                          Margin="4"
                          BackgroundColor="{StaticResource PrimaryDarkColor}" />
@@ -94,7 +94,7 @@
             <ImageButton Source="scissors_cutting.png"
                          Command="{Binding SaveImagesCommand}"
                          IsEnabled="{Binding IsImageAvailable}"
-                         HeightRequest="{OnPlatform Android=40, UWP=32}"
+                         HeightRequest="{OnPlatform Android=40, WinUI=32}"
                          Padding="4"
                          Margin="4"
                          BackgroundColor="{StaticResource PrimaryDarkColor}" />
@@ -102,7 +102,7 @@
             <!-- Info button -->
             <ImageButton Source="information_outline.png"
                          Command="{Binding InfoCommand}"
-                         HeightRequest="{OnPlatform Android=40, UWP=32}"
+                         HeightRequest="{OnPlatform Android=40, WinUI=32}"
                          Padding="4"
                          Margin="4"
                          BackgroundColor="{StaticResource PrimaryDarkColor}" />

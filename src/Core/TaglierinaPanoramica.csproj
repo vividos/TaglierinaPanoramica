@@ -1,38 +1,35 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+    <TargetFrameworks>net8.0-android;net8.0-windows10.0.19041.0</TargetFrameworks>
+    <UseMaui>true</UseMaui>
+    <UseMauiCompat>false</UseMauiCompat>
+    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.19041.0</SupportedOSPlatformVersion>
+    <OutputType>Library</OutputType>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <SingleProject>true</SingleProject>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Markdig" Version="0.37.0" />
-    <PackageReference Include="Resizetizer.NT" Version="0.3.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
+    <PackageReference Include="Refractored.MvvmHelpers" Version="1.6.2" />
     <PackageReference Include="SkiaSharp" Version="2.88.8" />
-    <PackageReference Include="SkiaSharp.Views.Forms" Version="2.88.8" />
-    <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.6" />
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2662" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.8.1" />
+    <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+    <PackageReference Include="SkiaSharp.Views.Maui.Core" Version="2.88.8" />
+    <PackageReference Include="SkiaSharp.Views.Maui.Controls" Version="2.88.8" />
+    <PackageReference Include="CommunityToolkit.Maui" Version="9.0.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="arrow_expand_horizontal.svg" />
-    <None Remove="content_save_outline.svg" />
-    <None Remove="Credits.md" />
-    <None Remove="image_multiple_outline.svg" />
-    <None Remove="information_outline.svg" />
-    <None Remove="scissors_cutting.svg" />
-    <EmbeddedResource Include="Credits.md" />
-    <SharedImage Include="arrow_expand_horizontal.svg" />
-    <SharedImage Include="image_multiple_outline.svg" />
-    <SharedImage Include="information_outline.svg" />
-    <SharedImage Include="panorama.svg" />
-    <SharedImage Include="rotate_left.svg" />
-    <SharedImage Include="scissors_cutting.svg" />
-    <SharedImage Include="share_variant.svg" />
+    <MauiAssets Include="Credits.md" />
+    <Mauimage Include="arrow_expand_horizontal.svg" />
+    <MauiImage Include="image_multiple_outline.svg" />
+    <MauiImage Include="information_outline.svg" />
+    <MauiImage Include="panorama.svg" />
+    <MauiImage Include="rotate_left.svg" />
+    <MauiImage Include="scissors_cutting.svg" />
+    <MauiImage Include="share_variant.svg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -42,11 +39,9 @@
     <Compile Update="InfoPopup.xaml.cs">
       <DependentUpon>InfoPage.xaml</DependentUpon>
     </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
     <EmbeddedResource Update="InfoPopup.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
+
 </Project>

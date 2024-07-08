@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Microsoft.Maui.Controls;
+using System;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.Storage.Streams;
-using Xamarin.Forms;
 
 [assembly: Dependency(typeof(TaglierinaPanoramica.UWP.PhotoLibrary))]
 

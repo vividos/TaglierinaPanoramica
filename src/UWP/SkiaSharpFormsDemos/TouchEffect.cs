@@ -1,10 +1,9 @@
-﻿using System;
+﻿using Microsoft.Maui.Controls;
+using Microsoft.UI.Input;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Input;
+using System;
 using System.Linq;
-using Windows.UI.Input;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Input;
-using Xamarin.Forms;
-using Xamarin.Forms.Platform.UWP;
 
 [assembly: ResolutionGroupName("XamarinDocs")]
 [assembly: ExportEffect(typeof(TouchTracking.UWP.TouchEffect), "TouchEffect")]

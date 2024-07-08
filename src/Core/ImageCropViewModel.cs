@@ -1,13 +1,11 @@
-﻿using SkiaSharp;
-using System;
+﻿using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Maui.Views;
+using MvvmHelpers;
+using MvvmHelpers.Commands;
+using SkiaSharp;
 using System.Diagnostics;
-using System.IO;
-using System.Threading.Tasks;
 using System.Windows.Input;
-using Xamarin.CommunityToolkit.Extensions;
-using Xamarin.CommunityToolkit.ObjectModel;
-using Xamarin.Essentials;
-using Xamarin.Forms;
+using Command = Microsoft.Maui.Controls.Command;
 
 namespace TaglierinaPanoramica
 {
@@ -258,7 +256,7 @@ namespace TaglierinaPanoramica
                 return;
             }
 
-            await Application.Current.MainPage.DisplayToastAsync("All tiled images were saved.");
+            await Application.Current.MainPage.DisplaySnackbar("All tiled images were saved.");
         }
 
         /// <summary>
@@ -287,7 +285,8 @@ namespace TaglierinaPanoramica
         /// </summary>
         private void ShowInfo()
         {
-            Application.Current.MainPage.Navigation.ShowPopup(new InfoPopup());
+            var popup = new InfoPopup();
+            Application.Current.MainPage.ShowPopup(popup);
         }
     }
 }

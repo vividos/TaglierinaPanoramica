@@ -1,8 +1,9 @@
 ﻿using Android.Media;
 using Android.OS;
 using Java.IO;
+using Microsoft.Maui.ApplicationModel;
+using Microsoft.Maui.Controls;
 using System.Threading.Tasks;
-using Xamarin.Forms;
 
 [assembly: Dependency(typeof(TaglierinaPanoramica.Droid.PhotoLibrary))]
 
@@ -46,7 +47,7 @@ namespace TaglierinaPanoramica.Droid
 
             // Make sure it shows up in the Photos gallery promptly.
             MediaScannerConnection.ScanFile(
-                Xamarin.Essentials.Platform.CurrentActivity,
+                Platform.CurrentActivity,
                 new string[] { bitmapFile.Path },
                 new string[] { "image/png", "image/jpeg" },
                 null);

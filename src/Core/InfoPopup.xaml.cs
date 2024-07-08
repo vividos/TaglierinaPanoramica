@@ -1,8 +1,4 @@
-﻿using System.IO;
-using Xamarin.Essentials;
-using Xamarin.Forms;
-
-namespace TaglierinaPanoramica
+﻿namespace TaglierinaPanoramica
 {
     /// <summary>
     /// Popup showing infos about the app

@@ -1,9 +1,11 @@
 using Android.Views;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui.Controls.Platform;
+using Microsoft.Maui.Graphics;
+using Microsoft.Maui.Platform;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Xamarin.Forms;
-using Xamarin.Forms.Platform.Android;
 
 #pragma warning disable SA1516 // Elements should be separated by blank line
 #pragma warning disable SA1600 // Elements should be documented
@@ -176,7 +178,7 @@ namespace TouchTracking.Droid
                     continue;
                 }
 
-                Rectangle viewRect = new Rectangle(this.twoIntArray[0], this.twoIntArray[1], viewToCheck.Width, viewToCheck.Height);
+                Rect viewRect = new Rect(this.twoIntArray[0], this.twoIntArray[1], viewToCheck.Width, viewToCheck.Height);
 
                 if (viewRect.Contains(pointerLocation))
                 {
