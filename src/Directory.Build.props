@@ -3,8 +3,6 @@
     <Product>Taglierina Panoramica</Product>
     <Copyright>Copyright © 2021-2024 Vividos</Copyright>
     <Company></Company>
-    <AssemblyVersion>1.0.1.0</AssemblyVersion>
-    <FileVersion>1.0.1.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup>
