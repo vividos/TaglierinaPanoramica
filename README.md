@@ -19,9 +19,9 @@ https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/graphics/s
 The rest is a fairly standard Xamarin.Forms app, using some external libraries
 to keep code low.
 
-Builds are done using Microsoft AppCenter:
+Builds are done using GitHub actions:
 
-![Build Status](https://build.appcenter.ms/v0.1/apps/e828d8fc-1bd7-4873-b127-a23ea09cb535/branches/main/badge)
+[![Build Android app](https://github.com/vividos/TaglierinaPanoramica/actions/workflows/build-app-android.yml/badge.svg)](https://github.com/vividos/TaglierinaPanoramica/actions/workflows/build-app-android.yml)
 
 ## License
 
