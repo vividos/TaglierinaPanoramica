@@ -1,6 +1,6 @@
 ﻿using SkiaSharp;
 
-namespace SkiaSharpFormsDemos.Bitmaps
+namespace SkiaSharpDemos.Bitmaps
 {
     /// <summary>
     /// Cropping rectangle data and handling

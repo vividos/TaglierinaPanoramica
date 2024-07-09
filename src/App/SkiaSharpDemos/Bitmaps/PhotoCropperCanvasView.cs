@@ -2,11 +2,11 @@
 using SkiaSharp.Views.Maui;
 using SkiaSharp.Views.Maui.Controls;
 
-namespace SkiaSharpFormsDemos.Bitmaps
+namespace SkiaSharpDemos.Bitmaps
 {
     /// <summary>
     /// Canvas view that allows cropping of photos
-    /// https://github.com/dotnet/maui-samples/blob/main/8.0/SkiaSharp/PhotoPuzzle/PhotoPuzzle/PhotoCropperCanvasView.cs
+    /// https://github.com/dotnet/maui-samples/blob/main/8.0/SkiaSharp/SkiaSharpDemos/SkiaSharpDemos/Bitmaps/PhotoCropperCanvasView.cs
     /// </summary>
     internal class PhotoCropperCanvasView : SKCanvasView
     {

@@ -14,7 +14,7 @@ italian on Duolingo.
 Most of the code for cropping images was taken from the SkiaSharp examples
 found here:
 
-https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/graphics/skiasharp/bitmaps/cropping
+https://github.com/dotnet/maui-samples/blob/main/8.0/SkiaSharp/SkiaSharpDemos/SkiaSharpDemos/Bitmaps/PhotoCropperCanvasView.cs
 
 The rest is a fairly standard Xamarin.Forms app, using some external libraries
 to keep code low.
