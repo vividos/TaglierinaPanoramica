@@ -16,7 +16,7 @@ found here:
 
 https://github.com/dotnet/maui-samples/blob/main/8.0/SkiaSharp/SkiaSharpDemos/SkiaSharpDemos/Bitmaps/PhotoCropperCanvasView.cs
 
-The rest is a fairly standard Xamarin.Forms app, using some external libraries
+The rest is a fairly standard .NET MAUI app, using some external libraries
 to keep code low.
 
 Builds are done using GitHub actions:
@@ -27,4 +27,4 @@ Builds are done using GitHub actions:
 
 The app is licensed using the [Apache License 2.0](LICENSE), the same license
 as the Xamarin.Forms SkiaSharp examples. See also the
-[Credits](src/Core/Credits.md) of the used libraries and resources.
+[Credits](src/App/Resources/Raw/Credits.md) of the used libraries and resources.
