@@ -1,4 +1,4 @@
-﻿using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Maui.Views;
 using MvvmHelpers;
@@ -33,7 +33,7 @@ namespace TaglierinaPanoramica
         /// <summary>
         /// Function to get the cropped image from the view
         /// </summary>
-        public Func<int, int, SKBitmap> GetCroppedImage { get; internal set; }
+        public Func<int, int, SKBitmap?>? GetCroppedImage { get; internal set; }
 
         #region Binding properties
 
@@ -50,7 +50,7 @@ namespace TaglierinaPanoramica
         /// <summary>
         /// Output resolution as text
         /// </summary>
-        public string OutputResolution { get; set; }
+        public string OutputResolution { get; set; } = "N/A";
 
         /// <summary>
         /// Rotate angle, in degrees
@@ -108,12 +108,12 @@ namespace TaglierinaPanoramica
         /// <summary>
         /// Original image filename
         /// </summary>
-        private string originalImageFilename;
+        private string? originalImageFilename;
 
         /// <summary>
         /// Property containing the original image to crop
         /// </summary>
-        public SKBitmap OriginalImage { get; set; }
+        public SKBitmap? OriginalImage { get; set; }
         #endregion
 
         /// <summary>
@@ -153,7 +153,13 @@ namespace TaglierinaPanoramica
             }
             catch (Exception ex)
             {
-                await App.Current.MainPage.DisplayAlert("Error while picking file", ex.Message, "Close");
+                Page mainPage = Application.Current?.MainPage
+                    ?? throw new InvalidOperationException("main page is not available");
+
+                await mainPage.DisplayAlert(
+                    "Error while picking file",
+                    ex.Message,
+                    "Close");
             }
         }
 
@@ -203,11 +209,14 @@ namespace TaglierinaPanoramica
         private async Task SaveImagesAsync()
         {
             int imageWidth = this.squareWidth * this.numberOfImages;
-            SKBitmap bitmap = this.GetCroppedImage?.Invoke(imageWidth, this.squareWidth);
+            SKBitmap? bitmap = this.GetCroppedImage?.Invoke(imageWidth, this.squareWidth);
+
+            Page mainPage = Application.Current?.MainPage
+                ?? throw new InvalidOperationException("main page is not available");
 
             if (bitmap == null)
             {
-                await Application.Current.MainPage.DisplayAlert(
+                await mainPage.DisplayAlert(
                     "Error while sharing images",
                     $"Could not create cropped image",
                     "Close");
@@ -249,7 +258,7 @@ namespace TaglierinaPanoramica
 
             if (numErrorImages > 0)
             {
-                await Application.Current.MainPage.DisplayAlert(
+                await mainPage.DisplayAlert(
                     "Error while saving images",
                     $"{numErrorImages} images were not exported",
                     "Close");
@@ -260,7 +269,7 @@ namespace TaglierinaPanoramica
             const string Message = "All tiled images were saved.";
 
 #if ANDROID
-            await Application.Current.MainPage.DisplaySnackbar(Message);
+            await mainPage.DisplaySnackbar(Message);
 #elif WINDOWS
             var toast = Toast.Make(Message, ToastDuration.Short);
             await toast.Show();
@@ -293,8 +302,11 @@ namespace TaglierinaPanoramica
         /// </summary>
         private void ShowInfo()
         {
+            Page mainPage = Application.Current?.MainPage
+                ?? throw new InvalidOperationException("main page is not available");
+
             var popup = new InfoPopup();
-            Application.Current.MainPage.ShowPopup(popup);
+            mainPage.ShowPopup(popup);
         }
     }
 }

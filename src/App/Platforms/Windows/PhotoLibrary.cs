@@ -20,7 +20,7 @@ namespace TaglierinaPanoramica.WinUI
         public async Task SavePhotoAsync(byte[] data, string folder, string filename)
         {
             StorageFolder picturesDirectory = KnownFolders.PicturesLibrary;
-            StorageFolder folderDirectory = picturesDirectory;
+            StorageFolder? folderDirectory = picturesDirectory;
 
             // Get the folder or create it if necessary
             if (!string.IsNullOrEmpty(folder))

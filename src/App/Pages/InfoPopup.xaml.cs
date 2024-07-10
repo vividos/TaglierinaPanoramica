@@ -1,4 +1,4 @@
-﻿namespace TaglierinaPanoramica
+namespace TaglierinaPanoramica
 {
     /// <summary>
     /// Popup showing infos about the app
@@ -24,12 +24,14 @@
         /// <returns>HTML text</returns>
         private string GetInfoText()
         {
-            string markdownText;
-            using (var stream = this.GetType().Assembly.GetManifestResourceStream("TaglierinaPanoramica.Credits.md"))
-            using (var reader = new StreamReader(stream))
+            using var stream = this.GetType().Assembly.GetManifestResourceStream("TaglierinaPanoramica.Credits.md");
+            if (stream == null)
             {
-                markdownText = reader.ReadToEnd();
+                return string.Empty;
             }
+
+            using var reader = new StreamReader(stream);
+            string markdownText = reader.ReadToEnd();
 
             markdownText = markdownText.Replace("${VERSION}", AppInfo.VersionString);
 

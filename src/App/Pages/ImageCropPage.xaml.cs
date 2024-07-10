@@ -1,4 +1,4 @@
-﻿namespace TaglierinaPanoramica
+namespace TaglierinaPanoramica
 {
     /// <summary>
     /// Image crop page
@@ -9,7 +9,8 @@
         /// View model for the image crop page
         /// </summary>
         private ImageCropViewModel ViewModel
-            => this.BindingContext as ImageCropViewModel;
+            => this.BindingContext as ImageCropViewModel
+            ?? throw new InvalidOperationException("view model not set as binding context!");
 
         /// <summary>
         /// Creates a new page object
@@ -19,7 +20,7 @@
             this.InitializeComponent();
 
             this.ViewModel.GetCroppedImage =
-                (width, height) => this.cropView.GetScaledCroppedBitmap(width, height);
+                (width, height) => this.cropView?.GetScaledCroppedBitmap(width, height);
         }
 
         /// <summary>

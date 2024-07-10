@@ -59,12 +59,12 @@ namespace SkiaSharpDemos.Bitmaps
         /// <summary>
         /// Bitmap to crop
         /// </summary>
-        private SKBitmap bitmap;
+        private SKBitmap? bitmap;
 
         /// <summary>
         /// Current cropping rectangle
         /// </summary>
-        private CroppingRectangle croppingRect;
+        private CroppingRectangle? croppingRect;
 
         /// <summary>
         /// Inverse bitmap matrix for touch tracking
@@ -232,8 +232,13 @@ namespace SkiaSharpDemos.Bitmaps
         /// <param name="destWidth">destination bitmap width</param>
         /// <param name="destHeight">destination bitmap height</param>
         /// <returns>scaled, cropped bitmap</returns>
-        public SKBitmap GetScaledCroppedBitmap(int destWidth, int destHeight)
+        public SKBitmap? GetScaledCroppedBitmap(int destWidth, int destHeight)
         {
+            if (this.croppingRect == null)
+            {
+                return null;
+            }
+
             SKRect cropRect = this.croppingRect.Rect;
             SKBitmap croppedBitmap = new SKBitmap(
                 destWidth,
@@ -280,6 +285,11 @@ namespace SkiaSharpDemos.Bitmaps
             var bitmapRect = new SKRect(x, y, x + (scale * this.bitmap.Width), y + (scale * this.bitmap.Height));
 
             canvas.DrawBitmap(this.bitmap, bitmapRect);
+
+            if (this.croppingRect == null)
+            {
+                return;
+            }
 
             // Calculate a matrix transform for displaying the cropping rectangle
             SKMatrix bitmapScaleMatrix = SKMatrix.CreateScaleTranslation(scale, scale, x, y);
@@ -333,7 +343,7 @@ namespace SkiaSharpDemos.Bitmaps
         /// </summary>
         /// <param name="sender">sender object</param>
         /// <param name="args">event args</param>
-        private void OnTouchEffectTouchAction(object sender, SKTouchEventArgs args)
+        private void OnTouchEffectTouchAction(object? sender, SKTouchEventArgs args)
         {
             SKPoint pixelLocation = this.ConvertToPixel(args.Location);
             SKPoint bitmapLocation = this.inverseBitmapMatrix.MapPoint(pixelLocation);
@@ -368,7 +378,8 @@ namespace SkiaSharpDemos.Bitmaps
         /// <param name="bitmapLocation">bitmap location of touch action</param>
         private void OnTouchActionPressed(long touchId, SKPoint bitmapLocation)
         {
-            if (this.touchPoints.ContainsKey(touchId))
+            if (this.croppingRect == null ||
+                this.touchPoints.ContainsKey(touchId))
             {
                 return;
             }
@@ -414,7 +425,8 @@ namespace SkiaSharpDemos.Bitmaps
         /// <param name="bitmapLocation">bitmap location of touch action</param>
         private void OnTouchActionMoved(long touchId, SKPoint bitmapLocation)
         {
-            if (!this.touchPoints.ContainsKey(touchId))
+            if (this.croppingRect == null ||
+                !this.touchPoints.ContainsKey(touchId))
             {
                 return;
             }
