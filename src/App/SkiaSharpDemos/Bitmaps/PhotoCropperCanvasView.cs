@@ -1,4 +1,4 @@
-﻿using SkiaSharp;
+using SkiaSharp;
 using SkiaSharp.Views.Maui;
 using SkiaSharp.Views.Maui.Controls;
 
@@ -23,7 +23,7 @@ namespace SkiaSharpDemos.Bitmaps
         /// <summary>
         /// Mapping of touch IDs to touch points
         /// </summary>
-        private readonly Dictionary<long, TouchPoint> touchPoints = new();
+        private readonly Dictionary<long, TouchPoint> touchPoints = [];
 
         /// <summary>
         /// Corner stroke drawing object
@@ -53,7 +53,7 @@ namespace SkiaSharpDemos.Bitmaps
             Style = SKPaintStyle.Stroke,
             Color = SKColors.White,
             StrokeWidth = 2,
-            PathEffect = SKPathEffect.CreateDash(new float[] { 4, 2 }, 20)
+            PathEffect = SKPathEffect.CreateDash([4, 2], 20)
         };
 
         /// <summary>
@@ -362,11 +362,7 @@ namespace SkiaSharpDemos.Bitmaps
 
                 case SKTouchAction.Released:
                 case SKTouchAction.Cancelled:
-                    if (this.touchPoints.ContainsKey(touchId))
-                    {
-                        this.touchPoints.Remove(touchId);
-                    }
-
+                    this.touchPoints.Remove(touchId);
                     break;
             }
         }
@@ -426,12 +422,11 @@ namespace SkiaSharpDemos.Bitmaps
         private void OnTouchActionMoved(long touchId, SKPoint bitmapLocation)
         {
             if (this.croppingRect == null ||
-                !this.touchPoints.ContainsKey(touchId))
+                !this.touchPoints.TryGetValue(touchId, out TouchPoint touchPoint))
             {
                 return;
             }
 
-            TouchPoint touchPoint = this.touchPoints[touchId];
             SKPoint delta = bitmapLocation - touchPoint.Offset;
 
             if (touchPoint.IsInsideRect)

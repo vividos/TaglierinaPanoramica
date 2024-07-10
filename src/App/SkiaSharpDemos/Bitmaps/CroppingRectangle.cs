@@ -74,13 +74,13 @@ namespace SkiaSharpDemos.Bitmaps
         {
             get
             {
-                return new SKPoint[]
-                {
+                return
+                [
                     new SKPoint(this.Rect.Left, this.Rect.Top),
                     new SKPoint(this.Rect.Right, this.Rect.Top),
                     new SKPoint(this.Rect.Right, this.Rect.Bottom),
                     new SKPoint(this.Rect.Left, this.Rect.Bottom)
-                };
+                ];
             }
         }
 

@@ -1,4 +1,4 @@
-﻿using Android.Media;
+using Android.Media;
 using Java.IO;
 using Environment = Android.OS.Environment;
 using File = Java.IO.File;
@@ -44,8 +44,8 @@ namespace TaglierinaPanoramica.Droid
             // Make sure it shows up in the Photos gallery promptly.
             MediaScannerConnection.ScanFile(
                 Platform.CurrentActivity,
-                new string[] { bitmapFile.Path },
-                new string[] { "image/png", "image/jpeg" },
+                [bitmapFile.Path],
+                ["image/png", "image/jpeg"],
                 null);
         }
     }
