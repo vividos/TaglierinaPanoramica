@@ -18,7 +18,7 @@
     <PackageReference Include="SonarAnalyzer.CSharp" Version="9.*" PrivateAssets="all" />
 
     <!-- Add reference to StyleCop analyzers to all projects -->
-    <PackageReference Include="StyleCop.Analyzers" Version="1.*" PrivateAssets="all" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.556" PrivateAssets="all" />
     <AdditionalFiles Include="$(MSBuildThisFileDirectory)stylecop.json" />
   </ItemGroup>
 </Project>

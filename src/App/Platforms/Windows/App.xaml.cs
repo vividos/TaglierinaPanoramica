@@ -14,7 +14,11 @@
             this.InitializeComponent();
         }
 
-        protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
+        /// <summary>
+        /// Creates a new Windows app object
+        /// </summary>
+        /// <returns>app object</returns>
+        protected override MauiApp CreateMauiApp()
+            => MauiProgram.CreateMauiApp();
     }
-
 }

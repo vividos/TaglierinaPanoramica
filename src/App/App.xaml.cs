@@ -7,7 +7,7 @@ using Microsoft.AppCenter.Distribute;
 namespace TaglierinaPanoramica
 {
     /// <summary>
-    /// Maui application
+    /// Taglierina Panoramica app
     /// </summary>
     public partial class App : Application
     {
@@ -16,12 +16,12 @@ namespace TaglierinaPanoramica
         /// </summary>
         public App()
         {
-            this.InitializeComponent();
-
             AppCenter.Start(
                 "83722e40-26a1-40b3-bd01-10bcf629c46b",
                 typeof(Distribute),
                 typeof(Crashes));
+
+            this.InitializeComponent();
 
 #if ANDROID
             DependencyService.Register<IPhotoLibrary, Droid.PhotoLibrary>();
