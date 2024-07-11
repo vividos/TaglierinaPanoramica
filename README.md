@@ -25,6 +25,6 @@ Builds are done using GitHub actions:
 
 ## License
 
-The app is licensed using the [Apache License 2.0](LICENSE), the same license
-as the Xamarin.Forms SkiaSharp examples. See also the
-[Credits](src/App/Resources/Raw/Credits.md) of the used libraries and resources.
+The app is licensed using the [MIT License](LICENSE.md). See also the
+[Credits](src/App/Resources/Raw/Credits.md) of the used libraries and
+resources.
