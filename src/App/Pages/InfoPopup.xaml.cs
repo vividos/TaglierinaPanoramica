@@ -12,7 +12,7 @@ namespace TaglierinaPanoramica
         {
             this.BindingContext = new HtmlWebViewSource
             {
-                Html = this.GetInfoText()
+                Html = GetInfoText()
             };
 
             this.InitializeComponent();
@@ -22,9 +22,12 @@ namespace TaglierinaPanoramica
         /// Returns info HTML text
         /// </summary>
         /// <returns>HTML text</returns>
-        private string GetInfoText()
+        private static string GetInfoText()
         {
-            using var stream = this.GetType().Assembly.GetManifestResourceStream("TaglierinaPanoramica.Credits.md");
+            using var stream = FileSystem
+                .OpenAppPackageFileAsync("Credits.md")
+                .Result;
+
             if (stream == null)
             {
                 return string.Empty;

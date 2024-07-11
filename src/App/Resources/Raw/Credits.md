@@ -1,4 +1,4 @@
-﻿# Taglierina Panoramica
+# Taglierina Panoramica
 
 Version ${VERSION}
 
@@ -8,27 +8,18 @@ The app uses the [SkiaSharp](https://github.com/mono/SkiaSharp)
 library to display and crop images. The library is licensed using the
 [MIT License](https://github.com/mono/SkiaSharp/blob/master/LICENSE.md).
 
-The app uses the [Xamarin.Essentials](https://github.com/xamarin/Essentials) library to
-access all sorts of platform specific APIs.
-The library is licensed using the
-[MIT License](https://github.com/xamarin/Essentials/blob/master/LICENSE).
-
-The app uses the [Xamarin Community Toolkit](https://github.com/xamarin/XamarinCommunityToolkit)
+The app uses the [.NET MAUI Community Toolkit](https://github.com/CommunityToolkit/Maui)
 library. The library is licensed using the
-[MIT License](https://github.com/xamarin/XamarinCommunityToolkit/blob/main/LICENSE).
+[MIT License](https://github.com/CommunityToolkit/Maui/blob/main/LICENSE).
 
-The app uses the [Markdig](https://github.com/lunet-io/markdig)
+The app uses the [Markdig](https://github.com/xoofx/markdig)
 library to format MarkDown as HTML.
 The component is licensed using the
-[BSD 2-clause "Simplified" License](https://github.com/lunet-io/markdig/blob/master/license.txt).
+[BSD 2-Clause License](https://github.com/xoofx/markdig/blob/master/license.txt).
 
-The app uses the [ResizetizerNT](https://github.com/lunet-io/markdig)
-tool to convert SVG images. The tool is licensed using the
-[MIT License](https://github.com/Redth/ResizetizerNT/blob/master/LICENSE).
-
-The app uses sample code from the [Xamarin Forms Samples](https://github.com/xamarin/xamarin-forms-samples)
+The app uses sample code from the [.NET MAUI Samples SkiaSharp Demos](https://github.com/dotnet/maui-samples/tree/main/8.0/SkiaSharp/SkiaSharpDemos/SkiaSharpDemos)
 to crop images. The code is licensed using the
-[Apache 2.0 License](https://github.com/xamarin/xamarin-forms-samples/blob/master/LICENSE).
+[MIT License](https://github.com/dotnet/maui-samples/blob/main/LICENSE).
 
 ## Icons
 
