@@ -162,7 +162,9 @@ namespace SkiaSharpDemos.Bitmaps
         /// </summary>
         public PhotoCropperCanvasView()
         {
-            this.Touch += this.OnTouchEffectTouchAction;
+            this.EnableTouchEvents = true;
+            this.Touch += this.OnTouch;
+            this.IgnorePixelScaling = true;
         }
 
         /// <summary>
@@ -339,11 +341,11 @@ namespace SkiaSharpDemos.Bitmaps
         }
 
         /// <summary>
-        /// Called when a touch action was sent from the touch effect object.
+        /// Called when a touch event occurred.
         /// </summary>
         /// <param name="sender">sender object</param>
         /// <param name="args">event args</param>
-        private void OnTouchEffectTouchAction(object? sender, SKTouchEventArgs args)
+        private void OnTouch(object? sender, SKTouchEventArgs args)
         {
             SKPoint pixelLocation = this.ConvertToPixel(args.Location);
             SKPoint bitmapLocation = this.inverseBitmapMatrix.MapPoint(pixelLocation);
@@ -365,6 +367,8 @@ namespace SkiaSharpDemos.Bitmaps
                     this.touchPoints.Remove(touchId);
                     break;
             }
+
+            args.Handled = true;
         }
 
         /// <summary>
