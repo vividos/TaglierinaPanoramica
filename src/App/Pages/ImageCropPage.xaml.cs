@@ -24,6 +24,16 @@ namespace TaglierinaPanoramica
         }
 
         /// <summary>
+        /// Loads image from stream
+        /// </summary>
+        /// <param name="stream">image stream</param>
+        /// <param name="originalFilename">original filename</param>
+        public void LoadImage(Stream stream, string? originalFilename)
+        {
+            this.ViewModel.LoadImage(stream, originalFilename);
+        }
+
+        /// <summary>
         /// Called when the square size slider value has changed
         /// </summary>
         /// <param name="sender">sender object</param>

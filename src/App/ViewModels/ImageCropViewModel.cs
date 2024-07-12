@@ -144,12 +144,7 @@ namespace TaglierinaPanoramica
                 }
 
                 using var stream = await result.OpenReadAsync();
-                this.originalImageFilename = result.FileName;
-
-                this.OriginalImage = SKBitmap.Decode(stream);
-                this.OnPropertyChanged(nameof(this.OriginalImage));
-                this.OnPropertyChanged(nameof(this.IsImageAvailable));
-                this.OnPropertyChanged(nameof(this.IsCropViewPlaceholderAvailable));
+                this.LoadImage(stream, result.FileName);
             }
             catch (Exception ex)
             {
@@ -161,6 +156,21 @@ namespace TaglierinaPanoramica
                     ex.Message,
                     "Close");
             }
+        }
+
+        /// <summary>
+        /// Loads image from stream
+        /// </summary>
+        /// <param name="stream">image stream</param>
+        /// <param name="originalFilename">original filename</param>
+        public void LoadImage(Stream stream, string? originalFilename)
+        {
+            this.originalImageFilename = originalFilename ?? "image";
+
+            this.OriginalImage = SKBitmap.Decode(stream);
+            this.OnPropertyChanged(nameof(this.OriginalImage));
+            this.OnPropertyChanged(nameof(this.IsImageAvailable));
+            this.OnPropertyChanged(nameof(this.IsCropViewPlaceholderAvailable));
         }
 
         /// <summary>
