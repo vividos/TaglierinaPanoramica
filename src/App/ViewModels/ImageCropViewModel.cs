@@ -269,7 +269,14 @@ namespace TaglierinaPanoramica
             const string Message = "All tiled images were saved.";
 
 #if ANDROID
-            await mainPage.DisplaySnackbar(Message);
+            await mainPage.DisplaySnackbar(
+                Message,
+                visualOptions: new SnackbarOptions
+                {
+                    TextColor = Colors.White,
+                    ActionButtonTextColor = Colors.White,
+                    BackgroundColor = Color.FromArgb("#29ccbf"),
+                });
 #elif WINDOWS
             var toast = Toast.Make(Message, ToastDuration.Short);
             await toast.Show();
