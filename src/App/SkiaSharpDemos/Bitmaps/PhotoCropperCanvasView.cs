@@ -13,7 +13,7 @@ namespace SkiaSharpDemos.Bitmaps
         /// <summary>
         /// Pixel length of cropper corner
         /// </summary>
-        private const int CORNER = 50;
+        private const int CORNER = 32;
 
         /// <summary>
         /// Pixel radius of touch hit-test
@@ -32,7 +32,7 @@ namespace SkiaSharpDemos.Bitmaps
         {
             Style = SKPaintStyle.Stroke,
             Color = SKColors.White,
-            StrokeWidth = 10
+            StrokeWidth = 8,
         };
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace SkiaSharpDemos.Bitmaps
         {
             Style = SKPaintStyle.Stroke,
             Color = SKColors.White,
-            StrokeWidth = 2
+            StrokeWidth = 1.5f,
         };
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace SkiaSharpDemos.Bitmaps
         {
             Style = SKPaintStyle.Stroke,
             Color = SKColors.White,
-            StrokeWidth = 2,
+            StrokeWidth = 1.5f,
             PathEffect = SKPathEffect.CreateDash([4, 2], 20)
         };
 
