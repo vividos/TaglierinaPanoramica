@@ -12,7 +12,7 @@ namespace TaglierinaPanoramica
         {
             this.BindingContext = new HtmlWebViewSource
             {
-                Html = GetInfoText()
+                Html = GetInfoText(),
             };
 
             this.InitializeComponent();

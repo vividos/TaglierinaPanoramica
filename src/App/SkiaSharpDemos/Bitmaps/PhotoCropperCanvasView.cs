@@ -53,7 +53,7 @@ namespace SkiaSharpDemos.Bitmaps
             Style = SKPaintStyle.Stroke,
             Color = SKColors.White,
             StrokeWidth = 1.5f,
-            PathEffect = SKPathEffect.CreateDash([4, 2], 20)
+            PathEffect = SKPathEffect.CreateDash([4, 2], 20),
         };
 
         /// <summary>
@@ -192,7 +192,7 @@ namespace SkiaSharpDemos.Bitmaps
         {
             if (this.bitmap != null)
             {
-                SKRect bitmapRect = new SKRect(0, 0, this.bitmap.Width, this.bitmap.Height);
+                var bitmapRect = new SKRect(0, 0, this.bitmap.Width, this.bitmap.Height);
                 float aspectRatio = this.NumberOfImages;
                 this.croppingRect = new CroppingRectangle(bitmapRect, aspectRatio);
             }
@@ -242,18 +242,18 @@ namespace SkiaSharpDemos.Bitmaps
             }
 
             SKRect cropRect = this.croppingRect.Rect;
-            SKBitmap croppedBitmap = new SKBitmap(
+            var croppedBitmap = new SKBitmap(
                 destWidth,
                 destHeight);
 
-            SKRect dest = new SKRect(0, 0, destWidth, destHeight);
-            SKRect source = new SKRect(
+            var dest = new SKRect(0, 0, destWidth, destHeight);
+            var source = new SKRect(
                 cropRect.Left,
                 cropRect.Top,
                 cropRect.Right,
                 cropRect.Bottom);
 
-            using (SKCanvas canvas = new SKCanvas(croppedBitmap))
+            using (var canvas = new SKCanvas(croppedBitmap))
             {
                 canvas.DrawBitmap(this.bitmap, source, dest);
             }
@@ -294,14 +294,14 @@ namespace SkiaSharpDemos.Bitmaps
             }
 
             // Calculate a matrix transform for displaying the cropping rectangle
-            SKMatrix bitmapScaleMatrix = SKMatrix.CreateScaleTranslation(scale, scale, x, y);
+            var bitmapScaleMatrix = SKMatrix.CreateScaleTranslation(scale, scale, x, y);
 
             // Display rectangle
             SKRect scaledCropRect = bitmapScaleMatrix.MapRect(this.croppingRect.Rect);
             canvas.DrawRect(scaledCropRect, this.edgeStroke);
 
             // Display heavier corners
-            using (SKPath path = new SKPath())
+            using (var path = new SKPath())
             {
                 path.MoveTo(scaledCropRect.Left, scaledCropRect.Top + CORNER);
                 path.LineTo(scaledCropRect.Left, scaledCropRect.Top);
@@ -324,7 +324,7 @@ namespace SkiaSharpDemos.Bitmaps
 
             // Also draw divider
             float dividerOffset = scaledCropRect.Width / this.NumberOfImages;
-            using (SKPath path = new SKPath())
+            using (var path = new SKPath())
             {
                 for (int lineIndex = 1; lineIndex < this.NumberOfImages; lineIndex++)
                 {
@@ -392,11 +392,11 @@ namespace SkiaSharpDemos.Bitmaps
 
             if (cornerIndex != -1)
             {
-                TouchPoint touchPoint = new TouchPoint
+                var touchPoint = new TouchPoint
                 {
                     CornerIndex = cornerIndex,
                     IsInsideRect = false,
-                    Offset = bitmapLocation - this.croppingRect.Corners[cornerIndex]
+                    Offset = bitmapLocation - this.croppingRect.Corners[cornerIndex],
                 };
 
                 this.touchPoints.Add(touchId, touchPoint);
@@ -406,7 +406,7 @@ namespace SkiaSharpDemos.Bitmaps
                 // Touched inside the rectangle
                 if (this.croppingRect.Rect.Contains(bitmapLocation))
                 {
-                    TouchPoint touchPoint = new TouchPoint
+                    var touchPoint = new TouchPoint
                     {
                         CornerIndex = -1,
                         IsInsideRect = true,

@@ -47,7 +47,7 @@ namespace TaglierinaPanoramica
 
             const int StepSize = 8;
 
-            var newStep = Math.Round(args.NewValue / StepSize);
+            double newStep = Math.Round(args.NewValue / StepSize);
             localSquareWidthSlider.Value = newStep * StepSize;
         }
     }
