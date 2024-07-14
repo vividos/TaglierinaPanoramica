@@ -17,10 +17,11 @@
         <ResourceDictionary>
             <!-- Image button syles -->
             <Style TargetType="ImageButton">
-                <Setter Property="WidthRequest" Value="{OnPlatform Android=40, WinUI=32}" />
-                <Setter Property="HeightRequest" Value="{OnPlatform Android=40, WinUI=32}" />
+                <Setter Property="WidthRequest" Value="40" />
+                <Setter Property="HeightRequest" Value="40" />
                 <Setter Property="Padding" Value="4" />
                 <Setter Property="Margin" Value="4" />
+                <Setter Property="CornerRadius" Value="8" />
                 <Setter Property="BackgroundColor" Value="{StaticResource PrimaryDarkColor}" />
             </Style>
 
@@ -35,24 +36,27 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <StackLayout Margin="0" Spacing="0">
+    <StackLayout Margin="0" Spacing="0"
+                 BackgroundColor="{StaticResource PrimaryColor}">
         <!-- Options -->
         <FlexLayout Direction="Row"
                     JustifyContent="Start"
                     AlignItems="Center"
                     AlignContent="Start"
                     Wrap="Wrap"
-                    Padding="4"
+                    HorizontalOptions="Start"
                     BackgroundColor="{StaticResource PrimaryColor}">
 
             <!-- Open button -->
             <ImageButton Source="panorama.png"
-                         Command="{Binding OpenImageCommand}" />
+                         Command="{Binding OpenImageCommand}"
+                         ToolTipProperties.Text="Opens image to crop and tile" />
 
             <!-- Rotate button -->
             <ImageButton Source="rotate_left.png"
                          Command="{Binding RotateImageCommand}"
-                         IsEnabled="{Binding IsImageAvailable}" />
+                         IsEnabled="{Binding IsImageAvailable}"
+                         ToolTipProperties.Text="Rotates the image to the left" />
 
             <!-- Output size selection -->
             <Frame>
@@ -77,7 +81,8 @@
                             ThumbColor="{StaticResource PrimaryDarkColor}"
                             MinimumTrackColor="White"
                             MaximumTrackColor="Black"
-                            Margin="8,0" />
+                            Margin="8,0"
+                            ToolTipProperties.Text="Sets the resulting image size to use" />
                 </HorizontalStackLayout>
             </Frame>
 
@@ -95,18 +100,21 @@
                     <Stepper Increment="1"
                              Minimum="2"
                              Maximum="8"
-                             Value="{Binding NumberOfImages}" />
+                             Value="{Binding NumberOfImages}"
+                             ToolTipProperties.Text="Adjusts the number of image tiles to generate" />
                 </StackLayout>
             </Frame>
 
             <!-- Save button -->
             <ImageButton Source="scissors_cutting.png"
                          Command="{Binding SaveImagesCommand}"
-                         IsEnabled="{Binding IsImageAvailable}" />
+                         IsEnabled="{Binding IsImageAvailable}"
+                         ToolTipProperties.Text="Tiles the images and saves them" />
 
             <!-- Info button -->
             <ImageButton Source="information_outline.png"
-                         Command="{Binding InfoCommand}" />
+                         Command="{Binding InfoCommand}"
+                         ToolTipProperties.Text="Shows the app's info dialog" />
         </FlexLayout>
 
         <!-- Cropping view -->
