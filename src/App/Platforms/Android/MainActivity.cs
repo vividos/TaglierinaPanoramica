@@ -32,9 +32,21 @@ namespace TaglierinaPanoramica.Droid
         {
             base.OnNewIntent(intent);
 
-            if (intent != null)
+            this.Intent = intent;
+        }
+
+        /// <summary>
+        /// Called when activity is about to be resumed; this is called after OnCreate or
+        /// OnNewIntent in order to check for a new file to open.
+        /// </summary>
+        protected override void OnResume()
+        {
+            base.OnResume();
+
+            if (this.Intent != null)
             {
-                this.ProcessIntent(intent);
+                this.ProcessIntent(this.Intent);
+                this.Intent = null;
             }
         }
 
