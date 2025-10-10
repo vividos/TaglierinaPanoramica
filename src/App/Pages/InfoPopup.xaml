@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xct:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-           xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-           x:Class="TaglierinaPanoramica.InfoPopup">
-    <xct:Popup.Content>
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:local="clr-namespace:TaglierinaPanoramica"
+               xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+               x:Class="TaglierinaPanoramica.InfoPopup"
+               x:DataType="HtmlWebViewSource">
+    <toolkit:Popup.Content>
         <!-- Web view showing infos about the app -->
         <WebView Source="{Binding .}"
-                 WidthRequest="400" HeightRequest="400"
-                 HorizontalOptions="FillAndExpand"
-                 VerticalOptions="FillAndExpand" />
-    </xct:Popup.Content>
-</xct:Popup>
+                 HorizontalOptions="Fill"
+                 VerticalOptions="Fill" />
+    </toolkit:Popup.Content>
+</toolkit:Popup>

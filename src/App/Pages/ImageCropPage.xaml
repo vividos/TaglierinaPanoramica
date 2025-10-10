@@ -5,7 +5,8 @@
              xmlns:bitmaps="clr-namespace:SkiaSharpDemos.Bitmaps"
              Title="Taglierina Panoramica"
              BackgroundColor="White"
-             x:Class="TaglierinaPanoramica.ImageCropPage">
+             x:Class="TaglierinaPanoramica.ImageCropPage"
+             x:DataType="local:ImageCropViewModel">
 
     <!-- View model -->
     <ContentPage.BindingContext>
@@ -20,26 +21,30 @@
                 <Setter Property="WidthRequest" Value="40" />
                 <Setter Property="HeightRequest" Value="40" />
                 <Setter Property="Padding" Value="4" />
-                <Setter Property="Margin" Value="4" />
+                <Setter Property="Margin" Value="4,4,0,4" />
                 <Setter Property="CornerRadius" Value="8" />
                 <Setter Property="BackgroundColor" Value="{StaticResource PrimaryDarkColor}" />
             </Style>
 
-            <!-- Frame with rounded corner styles -->
-            <Style TargetType="Frame">
-                <Setter Property="CornerRadius" Value="8" />
+            <!-- Border with rounded corner styles -->
+            <Style TargetType="Border">
+                <Setter Property="StrokeShape" Value="RoundRectangle 8" />
                 <Setter Property="HeightRequest" Value="40" />
                 <Setter Property="Padding" Value="8,0" />
-                <Setter Property="Margin" Value="4,0" />
+                <Setter Property="Margin" Value="4,4,0,4" />
                 <Setter Property="BackgroundColor" Value="{StaticResource AccentColor}" />
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <StackLayout Margin="0" Spacing="0"
-                 BackgroundColor="{StaticResource PrimaryColor}">
+    <Grid Margin="0"
+          ColumnDefinitions="*"
+          RowDefinitions="Auto, *"
+          BackgroundColor="{StaticResource PrimaryColor}">
+
         <!-- Options -->
-        <FlexLayout Direction="Row"
+        <FlexLayout Grid.Row="0"
+                    Direction="Row"
                     JustifyContent="Start"
                     AlignItems="Center"
                     AlignContent="Start"
@@ -59,7 +64,7 @@
                          ToolTipProperties.Text="Rotates the image to the left" />
 
             <!-- Output size selection -->
-            <Frame>
+            <Border>
                 <HorizontalStackLayout>
                     <Image Source="arrow_expand_horizontal.png"
                            Aspect="AspectFit"
@@ -84,10 +89,10 @@
                             Margin="8,0"
                             ToolTipProperties.Text="Sets the resulting image size to use" />
                 </HorizontalStackLayout>
-            </Frame>
+            </Border>
 
             <!-- Number of images selection -->
-            <Frame>
+            <Border>
                 <StackLayout Orientation="Horizontal">
                     <Image Source="image_multiple_outline.png"
                            Aspect="AspectFit"
@@ -103,7 +108,7 @@
                              Value="{Binding NumberOfImages}"
                              ToolTipProperties.Text="Adjusts the number of image tiles to generate" />
                 </StackLayout>
-            </Frame>
+            </Border>
 
             <!-- Save button -->
             <ImageButton Source="scissors_cutting.png"
@@ -118,8 +123,9 @@
         </FlexLayout>
 
         <!-- Cropping view -->
-        <Grid HorizontalOptions="FillAndExpand"
-              VerticalOptions="FillAndExpand">
+        <Grid Grid.Row="1"
+              HorizontalOptions="Fill"
+              VerticalOptions="Fill">
             <!-- Placeholder frame -->
             <Grid IsVisible="{Binding IsCropViewPlaceholderAvailable}"
                   BackgroundColor="{StaticResource PrimaryDarkColor}">
@@ -141,8 +147,8 @@
                        FontSize="32"
                        HorizontalTextAlignment="Center"
                        VerticalTextAlignment="Center"
-                       HorizontalOptions="FillAndExpand"
-                       VerticalOptions="FillAndExpand" />
+                       HorizontalOptions="Fill"
+                       VerticalOptions="Fill" />
             </Grid>
 
             <!-- Cropping canvas view -->
@@ -151,8 +157,8 @@
                                             RotateAngle="{Binding RotateAngle}"
                                             NumberOfImages="{Binding NumberOfImages}"
                                             IsVisible="{Binding IsImageAvailable}"
-                                            HorizontalOptions="FillAndExpand"
-                                            VerticalOptions="FillAndExpand" />
+                                            HorizontalOptions="Fill"
+                                            VerticalOptions="Fill" />
         </Grid>
-    </StackLayout>
+    </Grid>
 </ContentPage>

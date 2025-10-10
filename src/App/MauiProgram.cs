@@ -1,4 +1,4 @@
-﻿using CommunityToolkit.Maui;
+using CommunityToolkit.Maui;
 using SkiaSharp.Views.Maui.Controls.Hosting;
 
 namespace TaglierinaPanoramica
@@ -20,6 +20,12 @@ namespace TaglierinaPanoramica
                 .UseMauiCommunityToolkit()
                 .UseSkiaSharp()
                 .UseMauiApp<App>();
+
+#if ANDROID
+            builder.Services.AddSingleton<IPhotoLibrary, Droid.PhotoLibrary>();
+#elif WINDOWS
+            builder.Services.AddSingleton<IPhotoLibrary, WinUI.PhotoLibrary>();
+#endif
 
             return builder.Build();
         }

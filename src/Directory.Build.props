@@ -1,7 +1,7 @@
-﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Product>Taglierina Panoramica</Product>
-    <Copyright>Copyright © 2021-2024 Vividos</Copyright>
+    <Copyright>Copyright © 2021-2025 Vividos</Copyright>
     <Company></Company>
   </PropertyGroup>
 
@@ -10,12 +10,14 @@
     <DebugSymbols>true</DebugSymbols>
     <LangVersion>latest</LangVersion>
     <Deterministic>true</Deterministic>
+    <UseArtifactsOutput>true</UseArtifactsOutput>
+    <ArtifactsPath>$(MSBuildThisFileDirectory)artifacts</ArtifactsPath>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
   </PropertyGroup>
 
   <ItemGroup>
     <!-- Add reference to SonarAnalyzer analyzers to all projects -->
-    <PackageReference Include="SonarAnalyzer.CSharp" Version="9.*" PrivateAssets="all" />
+    <PackageReference Include="SonarAnalyzer.CSharp" Version="10.*" PrivateAssets="all" />
 
     <!-- Add reference to StyleCop analyzers to all projects -->
     <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.556" PrivateAssets="all" />

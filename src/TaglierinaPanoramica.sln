@@ -5,6 +5,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BC68DC61-70E7-4A5C-B332-5E74B966995D}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		..\.github\workflows\build-app-android.yml = ..\.github\workflows\build-app-android.yml
 		Directory.Build.props = Directory.Build.props
 		..\README.md = ..\README.md
 		stylecop.json = stylecop.json

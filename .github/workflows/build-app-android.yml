@@ -13,12 +13,12 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
 
     - name: Setup .NET
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v5
       with:
-        dotnet-version: 8.0.x
+        dotnet-version: 9.0.x
 
     - name: Prepare app signing
       uses: timheuer/base64-to-file@v1.2
@@ -31,7 +31,7 @@ jobs:
       run: >
         dotnet publish
         src/App/TaglierinaPanoramica.csproj
-        -f net8.0-android34.0
+        -f net9.0-android
         -p:AndroidKeyStore=true
         -p:AndroidPackageFormats=apk
         -p:AndroidSigningKeyStore=keystore.jks
@@ -43,4 +43,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: APK file
-        path: src/App/bin/Release/net8.0-android34.0/publish/de.vividos.apps.android.taglierina_panoramica-Signed.apk
+        path: src/artifacts/bin/TaglierinaPanoramica/release_net9.0-android/de.vividos.apps.android.taglierina_panoramica-Signed.apk

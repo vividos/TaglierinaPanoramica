@@ -1,8 +1,9 @@
+using CommunityToolkit.Maui;
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
-using CommunityToolkit.Maui.Views;
-using MvvmHelpers;
-using MvvmHelpers.Commands;
+using CommunityToolkit.Maui.Extensions;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using SkiaSharp;
 using System.Diagnostics;
 using System.Windows.Input;
@@ -67,10 +68,15 @@ namespace TaglierinaPanoramica
         public int SquareWidth
         {
             get => this.squareWidth;
-            set => this.SetProperty(
-                ref this.squareWidth,
-                value,
-                onChanged: this.UpdateCropView);
+            set
+            {
+                if (this.SetProperty(
+                    ref this.squareWidth,
+                    value))
+                {
+                    this.UpdateCropView();
+                }
+            }
         }
 
         /// <summary>
@@ -79,10 +85,15 @@ namespace TaglierinaPanoramica
         public int NumberOfImages
         {
             get => this.numberOfImages;
-            set => this.SetProperty(
-                ref this.numberOfImages,
-                value,
-                onChanged: this.UpdateCropView);
+            set
+            {
+                if (this.SetProperty(
+                    ref this.numberOfImages,
+                    value))
+                {
+                    this.UpdateCropView();
+                }
+            }
         }
 
         /// <summary>
@@ -121,10 +132,10 @@ namespace TaglierinaPanoramica
         /// </summary>
         public ImageCropViewModel()
         {
-            this.OpenImageCommand = new AsyncCommand(this.OpenImageAsync);
+            this.OpenImageCommand = new AsyncRelayCommand(this.OpenImageAsync);
             this.RotateImageCommand = new Command(this.RotateImage);
-            this.SaveImagesCommand = new AsyncCommand(this.SaveImagesAsync);
-            this.InfoCommand = new Command(this.ShowInfo);
+            this.SaveImagesCommand = new AsyncRelayCommand(this.SaveImagesAsync);
+            this.InfoCommand = new Command(ShowInfo);
 
             this.UpdateCropView();
         }
@@ -148,7 +159,7 @@ namespace TaglierinaPanoramica
             }
             catch (Exception ex)
             {
-                Page mainPage = Application.Current?.MainPage
+                Page mainPage = App.Current?.Windows[0].Page
                     ?? throw new InvalidOperationException("main page is not available");
 
                 await mainPage.DisplayAlert(
@@ -185,9 +196,9 @@ namespace TaglierinaPanoramica
                 return;
             }
 
-            SKBitmap rotatedBitmap = new SKBitmap(bitmap.Height, bitmap.Width);
+            var rotatedBitmap = new SKBitmap(bitmap.Height, bitmap.Width);
 
-            using (SKCanvas canvas = new SKCanvas(rotatedBitmap))
+            using (var canvas = new SKCanvas(rotatedBitmap))
             {
                 canvas.Clear();
                 canvas.Translate(0, bitmap.Width);
@@ -221,7 +232,7 @@ namespace TaglierinaPanoramica
             int imageWidth = this.squareWidth * this.numberOfImages;
             SKBitmap? bitmap = this.GetCroppedImage?.Invoke(imageWidth, this.squareWidth);
 
-            Page mainPage = Application.Current?.MainPage
+            Page mainPage = App.Current?.Windows[0].Page
                 ?? throw new InvalidOperationException("main page is not available");
 
             if (bitmap == null)
@@ -237,7 +248,7 @@ namespace TaglierinaPanoramica
             int numErrorImages = 0;
             for (int imageIndex = 0; imageIndex < this.numberOfImages; imageIndex++)
             {
-                SKBitmap subImage = new SKBitmap(this.squareWidth, this.squareWidth, isOpaque: true);
+                var subImage = new SKBitmap(this.squareWidth, this.squareWidth, isOpaque: true);
 
                 var sourceRectangle = SKRectI.Create(
                     imageIndex * this.squareWidth,
@@ -308,7 +319,11 @@ namespace TaglierinaPanoramica
             using var outputStream = new MemoryStream();
             subImage.Encode(outputStream, SKEncodedImageFormat.Jpeg, 95);
 
-            var photoLibrary = DependencyService.Get<IPhotoLibrary>();
+            IServiceProvider services =
+                IPlatformApplication.Current?.Services
+                ?? throw new InvalidOperationException("IServiceProvider is not available");
+
+            var photoLibrary = services.GetRequiredService<IPhotoLibrary>();
 
             byte[] data = outputStream.ToArray();
             await photoLibrary.SavePhotoAsync(data, "TaglierinaPanoramica", outputFilename);
@@ -317,13 +332,22 @@ namespace TaglierinaPanoramica
         /// <summary>
         /// Called when the info button is tapped
         /// </summary>
-        private void ShowInfo()
+        private static void ShowInfo()
         {
-            Page mainPage = Application.Current?.MainPage
+            Page mainPage = App.Current?.Windows[0].Page
                 ?? throw new InvalidOperationException("main page is not available");
 
             var popup = new InfoPopup();
-            mainPage.ShowPopup(popup);
+            mainPage.ShowPopup(
+                popup,
+                new PopupOptions
+                {
+                    Shape = new Microsoft.Maui.Controls.Shapes.RoundRectangle
+                    {
+                        CornerRadius = new CornerRadius(8),
+                        StrokeThickness = 0,
+                    }
+                });
         }
     }
 }

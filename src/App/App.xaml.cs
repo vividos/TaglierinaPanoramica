@@ -1,4 +1,4 @@
-﻿using Microsoft.AppCenter;
+using Microsoft.AppCenter;
 using Microsoft.AppCenter.Crashes;
 using Microsoft.AppCenter.Distribute;
 
@@ -22,14 +22,30 @@ namespace TaglierinaPanoramica
                 typeof(Crashes));
 
             this.InitializeComponent();
+        }
 
-#if ANDROID
-            DependencyService.Register<IPhotoLibrary, Droid.PhotoLibrary>();
-#elif WINDOWS
-            DependencyService.Register<IPhotoLibrary, WinUI.PhotoLibrary>();
-#endif
+        /// <summary>
+        /// Called when the app's window is about to be created. Sets the app's title.
+        /// </summary>
+        /// <param name="activationState">activation state</param>
+        /// <returns>window object</returns>
+        protected override Window CreateWindow(IActivationState? activationState)
+        {
+            var titleBar = DeviceInfo.Platform == DevicePlatform.WinUI
+                ? new TitleBar
+                {
+                    Title = "Taglierina Panoramica",
+                    BackgroundColor = Color.FromArgb("29ccbf"),
+                    ForegroundColor = Colors.White,
+                }
+                : null;
 
-            this.MainPage = new ImageCropPage();
+            return new Window
+            {
+                Title = "Taglierina Panoramica",
+                TitleBar = titleBar,
+                Page = new ImageCropPage(),
+            };
         }
     }
 }

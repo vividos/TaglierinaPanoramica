@@ -38,7 +38,7 @@ namespace TaglierinaPanoramica
         /// </summary>
         /// <param name="sender">sender object</param>
         /// <param name="args">event args</param>
-        private void Slider_ValueChanged(object sender, ValueChangedEventArgs args)
+        private static void Slider_ValueChanged(object sender, ValueChangedEventArgs args)
         {
             if (sender is not Slider localSquareWidthSlider)
             {

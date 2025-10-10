@@ -73,7 +73,7 @@ namespace TaglierinaPanoramica.Droid
             using var stream = this.ContentResolver?.OpenInputStream(uri);
 
             if (stream != null &&
-                App.Current?.MainPage is ImageCropPage page)
+                App.Current?.Windows[0].Page is ImageCropPage page)
             {
                 page.LoadImage(stream, contentName);
             }
