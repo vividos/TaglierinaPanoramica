@@ -162,7 +162,7 @@ namespace TaglierinaPanoramica
                 Page mainPage = App.Current?.Windows[0].Page
                     ?? throw new InvalidOperationException("main page is not available");
 
-                await mainPage.DisplayAlert(
+                await mainPage.DisplayAlertAsync(
                     "Error while picking file",
                     ex.Message,
                     "Close");
@@ -237,7 +237,7 @@ namespace TaglierinaPanoramica
 
             if (bitmap == null)
             {
-                await mainPage.DisplayAlert(
+                await mainPage.DisplayAlertAsync(
                     "Error while sharing images",
                     $"Could not create cropped image",
                     "Close");
@@ -279,7 +279,7 @@ namespace TaglierinaPanoramica
 
             if (numErrorImages > 0)
             {
-                await mainPage.DisplayAlert(
+                await mainPage.DisplayAlertAsync(
                     "Error while saving images",
                     $"{numErrorImages} images were not exported",
                     "Close");
